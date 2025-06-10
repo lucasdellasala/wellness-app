@@ -5,12 +5,14 @@ import LoginForm from "@/components/login-form"
 import MainUpload from "@/components/main-upload"
 import LoadingView from "@/components/loading-view"
 import ResultsView from "@/components/results-view"
+import { Meal } from "./types"
 
 type AppState = "login" | "main" | "loading" | "results"
 
+
 export default function WellnessApp() {
   const [currentView, setCurrentView] = useState<AppState>("login")
-  const [mealsData, setMealsData] = useState(null)
+  const [mealsData, setMealsData] = useState<Meal[] | null>(null)
 
   useEffect(() => {
     // Check if user is already logged in
@@ -28,7 +30,7 @@ export default function WellnessApp() {
     setCurrentView("loading")
   }
 
-  const handleAnalysisComplete = (data: any) => {
+  const handleAnalysisComplete = (data: Meal[]) => {
     setMealsData(data)
     setCurrentView("results")
   }
@@ -43,7 +45,7 @@ export default function WellnessApp() {
       {currentView === "login" && <LoginForm onLoginSuccess={handleLoginSuccess} />}
       {currentView === "main" && <MainUpload onImageUploaded={handleImageUploaded} />}
       {currentView === "loading" && <LoadingView onAnalysisComplete={handleAnalysisComplete} />}
-      {currentView === "results" && <ResultsView mealsData={mealsData} onUploadNew={handleUploadNew} />}
+      {currentView === "results" && mealsData && <ResultsView mealsData={mealsData} onUploadNew={handleUploadNew} />}
     </div>
   )
 }

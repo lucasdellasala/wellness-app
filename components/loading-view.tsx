@@ -5,9 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Brain, Loader2 } from "lucide-react"
 import { useToast } from "@/components/hooks/use-toast"
+import { Meal } from "../app/types"
 
 interface LoadingViewProps {
-  onAnalysisComplete: (data: unknown) => void
+  onAnalysisComplete: (data: Meal[]) => void
 }
 
 export default function LoadingView({ onAnalysisComplete }: LoadingViewProps) {

@@ -5,16 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { Camera, Lightbulb, TrendingUp } from "lucide-react"
-
-interface Meal {
-  name: string
-  calories: number
-  proteins: number
-  carbs: number
-  fats: number
-  tips: string[]
-  aiInsights: string
-}
+import { Meal } from "@/app/types"
 
 interface ResultsViewProps {
   mealsData: Meal[]
