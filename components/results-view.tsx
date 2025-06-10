@@ -37,7 +37,7 @@ export default function ResultsView({ mealsData, onUploadNew }: ResultsViewProps
         </div>
 
         <div className="space-y-6">
-          {mealsData.map((meal, index) => (
+          {mealsData.slice().reverse().map((meal, index) => (
             <Card key={index} className="overflow-hidden">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
